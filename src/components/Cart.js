@@ -28,7 +28,8 @@ const Cart = () => {
 
   // Calculate the total amount
   const totalAmount = cartItems.reduce(
-    (total, item) => total + item.price.replace("₹", "").replace(",", "") * item.quantity,
+    (total, item) =>
+      total + item.price.replace("₹", "").replace(",", "") * item.quantity,
     0
   );
 
@@ -41,7 +42,9 @@ const Cart = () => {
         const totalPrice = numberPrice * quantity;
         return (
           <div className="flex flex-col border-2 border-black" key={id}>
-            <div>Name: {name}</div>
+            <div>
+              Name: {name.length > 50 ? name.substring(0, 50) + "..." : name}
+            </div>
             <div className="flex gap-2">
               <button onClick={() => handleIncreaseQuantity(id)}>+</button>
               Quantity: {quantity}
